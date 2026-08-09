@@ -290,6 +290,7 @@
             <input type="checkbox" id="reg-terms" name="terms" required>
             <span>I agree to the <a href="terms.html" target="_blank">Terms and Conditions</a> <span class="required">*</span></span>
           </label>
+          <span class="terms-confirm" id="terms-confirm" style="display: none;">✓ Got it, thanks for agreeing</span>
         </div>
 
         <button type="submit" class="btn btn-primary btn-full modal-submit">Continue to Checkout</button>
@@ -508,6 +509,14 @@
       if (e.key === 'Escape' && modal.classList.contains('active')) closeModal();
     });
 
+    // --- Confirm terms checkbox visually when checked ---
+    const termsCheckboxEl = document.getElementById('reg-terms');
+    const termsConfirmEl = document.getElementById('terms-confirm');
+    termsCheckboxEl.addEventListener('change', function() {
+      termsConfirmEl.style.display = this.checked ? 'block' : 'none';
+      if (this.checked) this.classList.remove('input-error');
+    });
+
     // --- Show/hide school field based on occupation ---
     occupationSelect.addEventListener('change', function() {
       if (this.value === 'Student') {
@@ -705,6 +714,8 @@
       if (hasError) return;
 
       // Collect data
+      // Note: reaching this point means termsCheckbox.checked is true,
+      // since the validation above returns early otherwise.
       const registrationData = {
         firstName,
         lastName,
@@ -712,6 +723,7 @@
         phone,
         occupation,
         school: occupation === 'Student' ? school : '',
+        termsAccepted: 'yes',
         timestamp: new Date().toISOString()
       };
 
@@ -725,6 +737,7 @@
         phone: registrationData.phone,
         occupation: registrationData.occupation,
         school: registrationData.school || '',
+        termsAccepted: registrationData.termsAccepted,
         timestamp: registrationData.timestamp
       });
 
