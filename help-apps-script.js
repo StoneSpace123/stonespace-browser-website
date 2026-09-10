@@ -49,7 +49,7 @@ function doGet(e) {
     + '</div>';
 
   MailApp.sendEmail({
-    to: 'storkan123@gmail.com',
+    to: 'info.stonespace@gmail.com',
     subject: subject,
     body: body,
     htmlBody: htmlBody,
