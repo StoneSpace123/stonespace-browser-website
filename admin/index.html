@@ -1,3 +1,4 @@
+
 <!doctype html>
 <html lang="en">
 <head>
@@ -28,8 +29,8 @@
   <script>
     const API='https://script.google.com/macros/s/AKfycbwqhxXaY0xPWA-O4vlJoIq_ilOcgSyITRA4Mm4i2uNCbFgpwcRbGC-Q4DvO5lPM_biIOg/exec';
     let secret='',data=null;const $=s=>document.querySelector(s),money=n=>new Intl.NumberFormat('en-US',{style:'currency',currency:'USD'}).format(n||0),date=v=>v?new Date(v).toLocaleString([],{month:'short',day:'numeric',hour:'numeric',minute:'2-digit'}):'—',esc=s=>String(s||'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-    window.__stoneJsonp=r=>{document.body.classList.remove('spin');$('#stoneData')?.remove();if(!r.ok){$('#loginError').textContent=r.error||'Could not load dashboard';$('#login').classList.remove('hidden');$('#dashboard').classList.add('hidden');return}render(r.data)};
-    function load(){document.body.classList.add('spin');$('#loginError').textContent='';$('#stoneData')?.remove();const s=document.createElement('script');s.id='stoneData';s.onerror=()=>__stoneJsonp({ok:false,error:'Could not reach the dashboard data service'});s.src=API+'?mode=data&callback=__stoneJsonp&password='+encodeURIComponent(secret)+'&_='+Date.now();document.body.appendChild(s)}
+    function receive(r){document.body.classList.remove('spin');if(!r.ok){$('#loginError').textContent=r.error||'Could not load dashboard';$('#login').classList.remove('hidden');$('#dashboard').classList.add('hidden');return}render(r.data)}
+    function load(){document.body.classList.add('spin');$('#loginError').textContent='';fetch(API+'?mode=json&password='+encodeURIComponent(secret)+'&_='+Date.now(),{credentials:'omit'}).then(r=>r.json()).then(receive).catch(()=>receive({ok:false,error:'Could not reach the dashboard data service'}))}
     $('#loginForm').onsubmit=e=>{e.preventDefault();secret=$('#password').value;load()};$('#refresh').onclick=load;$('#search').oninput=()=>drawCustomers(data.customers,$('#search').value);
     function render(d){data=d;document.body.classList.remove('spin');$('#login').classList.add('hidden');$('#dashboard').classList.remove('hidden');$('#updated').textContent='Updated '+date(d.generatedAt);const s=d.summary;$('#stats').innerHTML=[['Net revenue',money(s.revenue-s.refunds),'After refunds'],['Customers',s.customers,'All captured people'],['Active',s.active,'Active subscriptions'],['Refunds',money(s.refunds),'Total refunded'],['Payment issues',s.failures,'Failed payments']].map(x=>'<div class="stat"><small>'+x[0]+'</small><strong>'+x[1]+'</strong><div class="sub">'+x[2]+'</div></div>').join('');$('#health').textContent=s.failures>2?'● Needs attention':'● Healthy';drawCustomers(d.customers,'');drawEvents(d.recentEvents);drawBars(d.recentEvents);drawInsights(s)}
     function drawCustomers(list,q){q=(q||'').toLowerCase();const rows=list.filter(c=>[c.name,c.email,c.product,c.status].join(' ').toLowerCase().includes(q));$('#customers').innerHTML=rows.length?rows.map(c=>'<tr><td><div class="person">'+esc(c.name||'Unknown')+'</div><small>'+esc(c.email)+'</small></td><td>'+esc(c.product||'—')+'</td><td><span class="pill '+(/cancel|expired|failed/.test((c.status||'').toLowerCase())?'bad':'')+'">'+esc(c.status||'Unknown')+'</span></td><td class="money">'+money(c.revenue-c.refunded)+'</td><td>'+c.orders+'</td><td>'+esc(c.lastEvent||'—')+'<br><small>'+date(c.lastEventAt)+'</small></td></tr>').join(''):'<tr><td colspan="6" class="empty">No customers match this search.</td></tr>'}
@@ -39,4 +40,3 @@
   </script>
 </body>
 </html>
-
