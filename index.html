@@ -127,17 +127,15 @@
   <section class="pricing" id="pricing">
     <div class="section-inner">
       <h2>Simple pricing</h2>
-      <p class="section-sub">Start with a <span class="trial-days">14</span>-day free trial. Cancel anytime.</p>
+      <p class="section-sub">Subscribe for <span class="price-value">$9.84</span> per month. Cancel anytime.</p>
 
       <div class="pricing-card">
-        <div class="pricing-trial-badge"><span class="trial-days">14</span> days free</div>
         <div class="pricing-header">
           <h3>Stonespace Browser</h3>
           <div class="pricing-amount">
             <span class="price price-value">$9.99</span>
             <span class="price-period">/month</span>
           </div>
-          <p class="pricing-trial-note">after <span class="trial-days">14</span>-day free trial</p>
         </div>
         <ul class="pricing-features">
           <li>Always-on-top floating browser</li>
@@ -146,7 +144,7 @@
           <li>Signed and notarized Mac installer</li>
           <li>Cancel anytime</li>
         </ul>
-        <a href="#" class="btn btn-primary btn-full open-registration">Start Free Trial</a>
+        <a href="#" class="btn btn-primary btn-full open-registration">Get Stonespace</a>
       </div>
     </div>
   </section>
@@ -310,18 +308,13 @@
     // CHANGE PRICE HERE — update this value when you
     // change the price on LemonSqueezy. This is the ONLY
     // place in the entire page where the price is set.
-    // All "$X.XX" and "X days free" text on the page
-    // pulls from these two variables automatically.
+    // All "$X.XX" text on the page pulls from this value.
     // =====================================================
     const PRODUCT_PRICE = '9.84';
-    const TRIAL_DAYS = 14;
 
-    // Fill in all price and trial-day placeholders
+    // Fill in all price placeholders
     document.querySelectorAll('.price-value').forEach(el => {
       el.textContent = '$' + PRODUCT_PRICE;
-    });
-    document.querySelectorAll('.trial-days').forEach(el => {
-      el.textContent = TRIAL_DAYS;
     });
   </script>
 
