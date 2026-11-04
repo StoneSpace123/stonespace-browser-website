@@ -19,14 +19,11 @@
     .video-wrap { width: min(520px, 100%); margin: 42px auto 0; }
     .video-wrap h2 { margin-bottom: 14px; text-align: center; font-size: 20px; }
     video { display: block; width: 100%; max-height: 360px; border-radius: 16px; background: #000; box-shadow: 0 18px 42px #0008; }
-    .download { display: inline-flex; align-items: center; justify-content: center; width: 100%; margin: 8px 0 12px; padding: 22px 26px; border: 2px solid #bba8ff; border-radius: 16px; color: white; background: linear-gradient(135deg, #956fff, #633be0); font-size: 21px; font-weight: 850; text-decoration: none; box-shadow: 0 16px 40px #6d45ee88; }
-    .download:hover { transform: translateY(-1px); filter: brightness(1.08); }
     .test-card { margin: 0 0 30px; padding: 20px; border: 1px solid #f5c45166; border-radius: 16px; background: #3a2d1166; }
     .test-card h2 { margin-bottom: 8px; color: #ffe09a; }
     .test-card p { margin: 0 0 16px; color: #ded4ba; line-height: 1.55; }
     .test-download { display: inline-flex; justify-content: center; width: 100%; padding: 17px 20px; border-radius: 12px; color: #171108; background: #f5c451; font-size: 17px; font-weight: 850; text-decoration: none; }
     .test-download:hover { filter: brightness(1.08); }
-    .note { margin: 0; text-align: center; color: #aaa6b5; font-size: 14px; }
     .steps { margin-top: 38px; padding-top: 30px; border-top: 1px solid #ffffff18; }
     h2 { margin: 0 0 20px; font-size: 24px; }
     ol { margin: 0; padding-left: 24px; color: #d6d3dd; line-height: 1.75; }
@@ -49,9 +46,6 @@
         <a class="test-download" href="../downloads/Stonespace-Input-Test-0.1.dmg">Download the Native Input Test</a>
       </div>
 
-      <a class="download" href="https://github.com/StoneSpace123/stonespace-browser-website/releases/download/v1.1.5/Stonespace.Browser-1.1.5-universal.dmg">⬇ Download the Update</a>
-      <p class="note">Apple-notarized universal installer for macOS</p>
-
       <div class="video-wrap">
         <h2>Need help? Watch this short video</h2>
         <video controls playsinline preload="metadata">
@@ -63,13 +57,13 @@
       <div class="steps">
         <h2>How to install</h2>
         <ol>
-          <li>Quit the current Stonespace Browser.</li>
+          <li>Temporarily quit the current Stonespace Browser so Command-3 is available.</li>
           <li>Open the downloaded DMG.</li>
-          <li>Drag Stonespace Browser into the <strong>Applications</strong> folder.</li>
-          <li>Choose <strong>Replace</strong> when your Mac asks.</li>
-          <li>Open Stonespace Browser normally.</li>
+          <li>Drag <strong>Stonespace Input Test</strong> into the Applications folder.</li>
+          <li>Open Stonespace Input Test and test Command-3, clicking, and typing.</li>
+          <li>When finished, quit the test and reopen the normal Stonespace Browser.</li>
         </ol>
-        <p class="license"><strong>Your saved license stays active.</strong> Do not deactivate your license or delete Stonespace's application data.</p>
+        <p class="license"><strong>The production Stonespace Browser remains unchanged.</strong> This test installs as a separate app.</p>
       </div>
     </section>
   </main>
