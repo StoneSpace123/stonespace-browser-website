@@ -21,6 +21,11 @@
     video { display: block; width: 100%; max-height: 360px; border-radius: 16px; background: #000; box-shadow: 0 18px 42px #0008; }
     .download { display: inline-flex; align-items: center; justify-content: center; width: 100%; margin: 8px 0 12px; padding: 22px 26px; border: 2px solid #bba8ff; border-radius: 16px; color: white; background: linear-gradient(135deg, #956fff, #633be0); font-size: 21px; font-weight: 850; text-decoration: none; box-shadow: 0 16px 40px #6d45ee88; }
     .download:hover { transform: translateY(-1px); filter: brightness(1.08); }
+    .test-card { margin: 0 0 30px; padding: 20px; border: 1px solid #f5c45166; border-radius: 16px; background: #3a2d1166; }
+    .test-card h2 { margin-bottom: 8px; color: #ffe09a; }
+    .test-card p { margin: 0 0 16px; color: #ded4ba; line-height: 1.55; }
+    .test-download { display: inline-flex; justify-content: center; width: 100%; padding: 17px 20px; border-radius: 12px; color: #171108; background: #f5c451; font-size: 17px; font-weight: 850; text-decoration: none; }
+    .test-download:hover { filter: brightness(1.08); }
     .note { margin: 0; text-align: center; color: #aaa6b5; font-size: 14px; }
     .steps { margin-top: 38px; padding-top: 30px; border-top: 1px solid #ffffff18; }
     h2 { margin: 0 0 20px; font-size: 24px; }
@@ -37,6 +42,12 @@
       <p class="eyebrow">Required update · Version 1.1.5</p>
       <h1>Update Stonespace Browser</h1>
       <p class="intro">This update keeps the Stonespace window visible across every macOS Desktop and adds automatic updates for future releases.</p>
+
+      <div class="test-card">
+        <h2>Native Input Test</h2>
+        <p>This is a separate experimental app for testing keyboard and mouse input with the lockdown system. It does not replace the current Stonespace Browser.</p>
+        <a class="test-download" href="/downloads/Stonespace-Input-Test-0.1.dmg">Download the Native Input Test</a>
+      </div>
 
       <a class="download" href="https://github.com/StoneSpace123/stonespace-browser-website/releases/download/v1.1.5/Stonespace.Browser-1.1.5-universal.dmg">⬇ Download the Update</a>
       <p class="note">Apple-notarized universal installer for macOS</p>
